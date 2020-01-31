@@ -1,3 +1,4 @@
+import { books as mockBooks } from "./../mocks/books";
 import { Injectable, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
@@ -12,8 +13,9 @@ export class BookService {
   constructor(private http: HttpClient) {}
 
   // Gets all the books from our mock server
-  getBooks(): Observable<Book[]> {
-    throw new Error("Oops. Not yet implemented...");
+  getBooks(): Book[] {
+    return mockBooks;
+    // throw new Error("Oops. Not yet implemented...");
   }
 
   // Gets a book by its id from our mock server
@@ -21,7 +23,16 @@ export class BookService {
     throw new Error("Oops. Not yet implemented...");
   }
 
+  searchWithoutObs(term) {
+    return mockBooks.filter(
+      book =>
+        book.title.toLowerCase().includes(term.toLowerCase()) ||
+        book.category.toLowerCase().includes(term.toLowerCase())
+    );
+  }
+
   search(term$: Observable<string>): Observable<Book[]> {
+    // Implement the search function
     throw new Error("Oops. Not yet implemented...");
   }
 

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Book } from "../types/book";
-import { books as mockBooks } from "../mocks/books";
+import { BookService } from "../services/books.service";
 
 @Component({
   selector: "app-root",
@@ -9,13 +9,11 @@ import { books as mockBooks } from "../mocks/books";
 export class AppComponent {
   title = "Bookstore by Hackages";
 
+  constructor(private bookService: BookService) {}
   // Use mock data
-  books: Book[] = mockBooks;
+  books: Book[] = this.bookService.getBooks();
 
   search(term: string) {
-    // Implement the search function
-    this.books = mockBooks.filter(book =>
-      book.title.toLowerCase().includes(term.toLowerCase())
-    );
+    this.books = this.bookService.searchWithoutObs(term);
   }
 }
