@@ -144,11 +144,12 @@ Once you have your login working, refactor it to use the `FormBuilder` API inste
 
 ### Architecture/Module
 
-Lets break our application into isolated modules. We're going to create these 3 modules:
+Lets break our application into isolated modules. We're going to create these 4 modules:
 
 - AuthModule
+- BookModule
 - CoreModule
-- ShareModule
+- SharedModule
 
 Lets discuss first what should be added into each module then refactor our application to reflect our choices.
 
