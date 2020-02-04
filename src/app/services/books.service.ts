@@ -24,7 +24,7 @@ export class BookService {
 
   // Gets a book by its id from our mock server
   getBook(id: number): Observable<Book> {
-    throw new Error("Oops. Not yet implemented...");
+    return this.http.get<Book>(`${this.booksUrl}/${id}`);
   }
 
   // Adds a new book and re-fetch the list of books.
